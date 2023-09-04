@@ -15,7 +15,9 @@ function Home() {
           <h1 className='todo'>To-Do List</h1>
           <p>Stay Organized, Achieve More.</p>
           <br />
-          <button className='button'><Link to="/dashboard" style={{ color: 'white' }} >Start Organizing</Link></button>
+          <button className='button'><Link to="/dashboard" style={{ color: 'white' }} >Start Sticky</Link></button><br></br>
+          
+          <button  className='button b1' ><Link to="/todo" style={{ color: 'white' }} >Start ToDo</Link></button>
         </div>
       </div>
     </>

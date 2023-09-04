@@ -22,6 +22,9 @@ function Dashboard() {
       setNotes(updatedNotes);
       saveNote(updatedNotes);
     };
+    const roseColorStyle = {
+      backgroundColor: 'rose', // You can use the color name 'rose'
+    };
 
     const deleteNotes = (id) => {
       const updatedNotes = notes.filter((note) => note.id !== id);
@@ -32,6 +35,7 @@ function Dashboard() {
     return (
       <textarea
         className="sticky"
+        style={roseColorStyle}
         value={content}
         placeholder="Enter Your Notes"
         onChange={(e) => updatesticky(id, e.target.value)}
