@@ -48,12 +48,31 @@ body {
   filter: drop-shadow(0 0 2em white) brightness(0.5)!important;
 }
 
-.todo:hover {
+/* .todo:hover {
   filter: drop-shadow(0 0 2em #ffffff) brightness(0.5);
 }
 
 .todo.react:hover {
   filter: drop-shadow(0 0 2em #ffffff) brightness(0.5);
+} */
+
+@keyframes shadowMove1 {
+  0% {
+    text-shadow: 3px 3px 0 red;
+  }
+  33% {
+    text-shadow: 3px 3px 0 green;
+  }
+  66% {
+      text-shadow: 3px 3px 0 blue;
+    }
+  100% {
+    text-shadow: 3px 3px 0 red;
+  }
+}
+
+.todo{
+animation: shadowMove1 3s infinite;
 }
 
 
@@ -83,9 +102,9 @@ body {
   div:nth-of-type(1) .padam {
     animation: padam-spin 0.75s linear;
   }
-  div:nth-of-type(1) .todo {
+  /* div:nth-of-type(1) .todo {
     animation: todo-spin 0.75s linear;
-  }
+  } */
 
 }
 

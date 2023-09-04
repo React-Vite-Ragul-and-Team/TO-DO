@@ -18,10 +18,11 @@ header {
   align-items: center;
   background-color: #000000; /* Set a background color for the header */
   width: 100%; /* Makes the header span the entire width of the viewport */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a shadow for better visibility */
-  padding: 10px 20px; /* Add padding to the header for spacing */
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  padding-top: 4px;  */
   z-index: 999; /* Adjust the z-index to ensure it appears above other content */
   justify-content: center;
+  height: 32px;
 }
 
 footer {
@@ -31,7 +32,6 @@ footer {
   right: 0;
   display: flex; /* Use flexbox to center content */
   justify-content: center; /* Center content horizontally */
-  align-items: center; /* Center content vertically */
   background-color: #000000;
   height: 32px;
   width: 100%;
@@ -41,12 +41,10 @@ footer {
 }
 
 #footer-text {
-  min-height: -10vh;
+  padding-top: 5.5px;
   margin: 0;
   font-size: 16px;
   color: red; /* Set the text color to red */
-  text-align: center;
-  padding-bottom: 0;
 }
 
 /* CSS animation for blinking */
@@ -100,6 +98,7 @@ footer {
 }
 
 #color-cycling-text {
+  padding: 8;
   animation: colorCycle 5s infinite;
 }
 

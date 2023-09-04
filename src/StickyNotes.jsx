@@ -1,89 +1,3 @@
-// import React, { useState, useEffect } from 'react';
-// import './StickyNotes.css'
-// import 'bootstrap-icons/font/bootstrap-icons.css';
-
-// function StickyNotes() {
-//   const [notes, setNotes] = useState([]);
-//   const containerElement = document.getElementById('container');
-
-//   useEffect(() => {
-//     const storedNotes = getAppStorage();
-//     setNotes(storedNotes);
-//   }, []);
-
-//   const getAppStorage = () => {
-//     return JSON.parse(localStorage.getItem('abdur_app') || '[]');
-//   };
-
-//   const createTextElement = (id, content) => {
-//     const updatesticky = (id, name) => {
-//       const updatedNotes = notes.map((note) =>
-//         note.id === id ? { ...note, name } : note
-//       );
-//       setNotes(updatedNotes);
-//       saveNote(updatedNotes);
-//     };
-//     const roseColorStyle = {
-//       backgroundColor: 'rose', // You can use the color name 'rose'
-//     };
-
-//     const deleteNotes = (id) => {
-//       const updatedNotes = notes.filter((note) => note.id !== id);
-//       setNotes(updatedNotes);
-//       saveNote(updatedNotes);
-//     };
-
-//     return (
-//       <textarea
-//         className="sticky"
-//         style={roseColorStyle}
-//         value={content}
-//         placeholder="Enter Your Notes"
-//         onChange={(e) => updatesticky(id, e.target.value)}
-//         onDoubleClick={() => {
-//           const check = window.confirm('Are You Sure to Delete ?');
-//           if (check) {
-//             deleteNotes(id);
-//           }
-//         }}
-//       />
-//     );
-//   };
-
-//   const saveNote = (updatedNotes) => {
-//     localStorage.setItem('abdur_app', JSON.stringify(updatedNotes));
-//   };
-
-//   const addsticky = () => {
-//     const newNote = {
-//       id: Math.floor(Math.random() * 1000000),
-//       name: '',
-//     };
-//     const updatedNotes = [...notes, newNote];
-//     setNotes(updatedNotes);
-//     saveNote(updatedNotes);
-//   };
-
-//   return (
-//     <div>
-//       {notes.map((note) => (
-//         <React.Fragment key={note.id}>
-//           {createTextElement(note.id, note.name)}
-//         </React.Fragment>
-//       ))}
-//       <br />
-//       <button className="btn-add" onClick={addsticky}>
-//       <i class="bi-file-earmark-plus" style={{ fontSize: 30 }} ></i>
-//       </button>
-//     </div>
-//   );
-// }
-
-// export default StickyNotes;
-
-
-
-
 import React, { useState, useEffect } from 'react';
 import './StickyNotes.css'
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -135,7 +49,7 @@ function StickyNotes() {
   return (
     <div>
       <header >
-        <h2 id="color-cycling-text">Where Ideas Find Their Colorful Home</h2>
+        <h2 id="color-cycling-text">WHERE IDEAS FIND THEIR COLORFUL HOME</h2>
       </header>
       {notes.map((note) => (
         <React.Fragment key={note.id}>
@@ -159,19 +73,12 @@ function StickyNotes() {
         <i className="bi bi-file-earmark-plus" style={{ fontSize: 30 }}></i>
       </button>
       <footer>
-        <div id="footer-text" className="blink">
-        <pre>
-    Single Click on a note to EDIT                                                     Double Click on a note to DELETE
-</pre>
-
-          </div>
+          <pre id="footer-text" className="blink">
+            Single click to EDIT                                                                  Double click to DELETE
+          </pre>
       </footer>
     </div>
   );
 }
 
 export default StickyNotes;
-
-
-
-

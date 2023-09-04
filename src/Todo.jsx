@@ -1,156 +1,229 @@
-import React, { Component } from "react";
-import "bootstrap/dist/css/bootstrap.css";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import InputGroup from "react-bootstrap/InputGroup";
-import FormControl from "react-bootstrap/FormControl";
-import ListGroup from "react-bootstrap/ListGroup";
-  
+// import React, { Component } from 'react';
+// import './Todo.css';
+
+// class App extends Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = {
+//             todos: [],
+//             newTodo: '',
+//             editedTodo: '',
+//             editMode: false,
+//         };
+//     }
+
+//     addTodo = () => {
+//         if (this.state.newTodo.trim() === '') return;
+//         this.setState((prevState) => ({
+//             todos: [...prevState.todos, this.state.newTodo],
+//             newTodo: '',
+//         }));
+//     };
+
+//     editTodo = (index) => {
+//         this.setState({
+//             editMode: true,
+//             editedTodo: this.state.todos[index],
+//         });
+//     };
+
+//     updateTodo = () => {
+//         if (this.state.editedTodo.trim() === '') return;
+//         const updatedTodos = [...this.state.todos];
+//         updatedTodos[this.state.editMode] = this.state.editedTodo;
+//         this.setState({
+//             todos: updatedTodos,
+//             editMode: false,
+//             editedTodo: '',
+//         });
+//     };
+
+//     deleteTodo = (index) => {
+//         const updatedTodos = [...this.state.todos];
+//         updatedTodos.splice(index, 1);
+//         this.setState({
+//             todos: updatedTodos,
+//         });
+//     };
+
+//     render() {
+//         return (
+//             <div className="container">
+//                 <h1>Todo List</h1>
+//                 <div className="card mb-3">
+//                     <div className="card-body">
+//                         <div className="input-group">
+//                             <input
+//                                 type="text"
+//                                 className="form-control"
+//                                 placeholder="Add a new todo"
+//                                 value={this.state.editMode ? this.state.editedTodo : this.state.newTodo}
+//                                 maxLength={40}  // Set the maximum length to 40 characters
+//                                 onChange={(e) =>
+//                                     this.state.editMode
+//                                         ? this.setState({ editedTodo: e.target.value })
+//                                         : this.setState({ newTodo: e.target.value })
+//                                 }
+//                             />
+//                             <div className="input-group-append">
+//                                 <br />
+//                                 <button
+//                                     className="btn btn-primary"
+//                                     onClick={this.state.editMode ? this.updateTodo : this.addTodo}
+//                                 >
+//                                     {this.state.editMode ? <i className="bi bi-pencil"></i> : <i className="bi bi-calendar-plus"></i>}
+//                                 </button>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//                 <table className="table table-bordered">
+//                     <thead>
+//                         <tr>
+//                             <th scope="col">Tasks</th>
+//                             <th scope="col">Edit</th>
+//                             <th scope="col">Delete</th>
+//                         </tr>
+//                     </thead>
+//                     <tbody>
+//                         {this.state.todos.map((todo, index) => (
+//                             <tr key={index}>
+//                                 <td>{todo}</td>
+//                                 <td>
+//                                     <button className="btn btn-warning" onClick={() => this.editTodo(index)}>
+//                                         <i className="bi bi-pencil"></i>
+//                                     </button>
+//                                 </td>
+//                                 <td>
+//                                     <button className="btn btn-danger" onClick={() => this.deleteTodo(index)}>
+//                                         <i className="bi bi-trash"></i>
+//                                     </button>
+//                                 </td>
+//                             </tr>
+//                         ))}
+//                     </tbody>
+//                 </table>
+//             </div>
+//         );
+//     }
+// }
+
+// export default App;
+
+
+import React, { Component } from 'react';
+import './Todo.css';
+
 class App extends Component {
     constructor(props) {
         super(props);
-  
-        // Setting up state
         this.state = {
-            userInput: "",
-            list: [],
+            todos: [],
+            newTodo: '',
+            editedTodo: '',
+            editMode: false,
+            editIndex: -1, // Initialize editIndex as -1
         };
     }
-  
-    // Set a user input value
-    updateInput(value) {
+
+    addTodo = () => {
+        if (this.state.newTodo.trim() === '') return;
+        this.setState((prevState) => ({
+            todos: [...prevState.todos, this.state.newTodo],
+            newTodo: '',
+        }));
+    };
+
+    editTodo = (index) => {
         this.setState({
-            userInput: value,
+            editMode: true,
+            editedTodo: this.state.todos[index],
+            editIndex: index, // Store the index of the todo being edited
         });
-    }
-  
-    // Add item if user input in not empty
-    addItem() {
-        if (this.state.userInput !== "") {
-            const userInput = {
-                // Add a random id which is used to delete
-                id: Math.random(),
-  
-                // Add a user value to list
-                value: this.state.userInput,
-            };
-  
-            // Update list
-            const list = [...this.state.list];
-            list.push(userInput);
-  
-            // reset state
-            this.setState({
-                list,
-                userInput: "",
-            });
-        }
-    }
-  
-    // Function to delete item from list use id to delete
-    deleteItem(key) {
-        const list = [...this.state.list];
-  
-        // Filter values and leave value which we need to delete
-        const updateList = list.filter((item) => item.id !== key);
-  
-        // Update list in state
+    };
+
+    updateTodo = () => {
+        if (this.state.editedTodo.trim() === '') return;
+        const updatedTodos = [...this.state.todos];
+        updatedTodos[this.state.editIndex] = this.state.editedTodo; // Update the specific todo
         this.setState({
-            list: updateList,
+            todos: updatedTodos,
+            editMode: false,
+            editedTodo: '',
+            editIndex: -1, // Reset the editIndex
         });
-    }
-  
-    editItem = (index) => {
-      const todos = [...this.state.list];
-      const editedTodo = prompt('Edit the todo:');
-      if (editedTodo !== null && editedTodo.trim() !== '') {
-        let updatedTodos = [...todos]
-        updatedTodos[index].value= editedTodo
+    };
+
+    deleteTodo = (index) => {
+        const updatedTodos = [...this.state.todos];
+        updatedTodos.splice(index, 1);
         this.setState({
-          list: updatedTodos,
-      });
-      }
-    }
-  
+            todos: updatedTodos,
+        });
+    };
+
     render() {
         return (
-            <Container>
-                <Row
-                    style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        fontSize: "3rem",
-                        fontWeight: "bolder",
-                    }}
-                >
-                    TODO LIST
-                </Row>
-  
-                <hr />
-                <Row>
-                    <Col md={{ span: 5, offset: 4 }}>
-                        <InputGroup className="mb-3">
-                            <FormControl
-                                placeholder="add item . . . "
-                                size="lg"
-                                value={this.state.userInput}
-                                onChange={(item) =>
-                                    this.updateInput(item.target.value)
+            <div className="container">
+                <h1 className='topic'>Todo List</h1>
+                <div className="card mb-3">
+                    <div className="card-body">
+                        <div className="input-group">
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Add a new todo"
+                                value={this.state.editMode ? this.state.editedTodo : this.state.newTodo}
+                                maxLength={40}  // Set the maximum length to 40 characters
+                                onChange={(e) =>
+                                    this.state.editMode
+                                        ? this.setState({ editedTodo: e.target.value })
+                                        : this.setState({ newTodo: e.target.value })
                                 }
-                                aria-label="add something"
-                                aria-describedby="basic-addon2"
                             />
-                            <InputGroup>
-                                <Button
-                                    variant="dark"
-                                    className="mt-2"
-                                    onClick={() => this.addItem()}
+                            <div className="input-group-append">
+                                <br />
+                                <button
+                                    className="btn btn-primary"
+                                    onClick={this.state.editMode ? this.updateTodo : this.addTodo}
                                 >
-                                    ADD
-                                </Button>
-                            </InputGroup>
-                        </InputGroup>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col md={{ span: 5, offset: 4 }}>
-                        <ListGroup>
-                            {/* map over and print items */}
-                            {this.state.list.map((item, index) => {
-                                return (
-                                  <div key = {index} > 
-                                    <ListGroup.Item
-                                        variant="dark"
-                                        action
-                                        style={{display:"flex",
-                                                justifyContent:'space-between'
-                                      }}
-                                    >
-                                        {item.value}
-                                        <span>
-                                        <Button style={{marginRight:"10px"}}
-                                        variant = "light"
-                                        onClick={() => this.deleteItem(item.id)}>
-                                          Delete
-                                        </Button>
-                                        <Button variant = "light"
-                                        onClick={() => this.editItem(index)}>
-                                          Edit
-                                        </Button>
-                                        </span>
-                                    </ListGroup.Item>
-                                  </div>
-                                );
-                            })}
-                        </ListGroup>
-                    </Col>
-                </Row>
-            </Container>
+                                    {this.state.editMode ? <i className="bi bi-pencil"></i> : <i className="bi bi-calendar-plus"></i>}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <table className="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Tasks</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.state.todos.map((todo, index) => (
+                            <tr key={index}>
+                                <td>{todo}</td>
+                                <td>
+                                    <button className="btn btn-warning" onClick={() => this.editTodo(index)}>
+                                        <i className="bi bi-pencil"></i>
+                                    </button>
+                                </td>
+                                <td>
+                                    <button className="btn btn-danger" onClick={() => this.deleteTodo(index)}>
+                                        <i className="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         );
     }
 }
-  
+
 export default App;
+
+

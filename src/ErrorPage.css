@@ -1,0 +1,40 @@
+@keyframes blink2 {
+    0%, 30% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  .thappu{
+    color: darkred;
+  animation: blink2 1s infinite;
+  }
+  .veedu{
+    background-color: green;
+    color: #fff; /* Custom text color */
+  border: none; /* Remove default button border */
+  padding: 10px 20px; /* Adjust padding to your preference */
+  font-size: 16px; /* Custom font size */
+  cursor: pointer; /* Add a pointer cursor on hover */
+  border-radius: 13px; /* Rounded corners for the button */
+  }
+
+  @keyframes shadowMove3 {
+    0% {
+      text-shadow: 3px 3px 0 rgb(251, 4, 160);
+    }
+    33% {
+      text-shadow: 3px 3px 0 pink;
+    }
+    66% {
+        text-shadow: 3px 3px 0 rgb(198, 103, 154);
+      }
+    100% {
+      text-shadow: 3px 3px 0 rgb(251, 4, 160);
+    }
+  }
+
+  .bi-heartbreak{
+  animation: shadowMove3 1.5s infinite;
+  }
