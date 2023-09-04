@@ -13,6 +13,7 @@ function Home() {
         </div>
         <div >
           <h1 className='todo' style={{ color: 'white' }}>To-Do List</h1>
+          <h2 className='todo' style={{ color: 'white' }}>2 IN 1</h2>
           <p style={{ color: 'white' }}>Stay Organized, Achieve More.</p>
           <br />
           <button className='button'><Link to="/sticky" style={{ color: 'white' }} >Start Sticky Notes</Link></button><br></br>
