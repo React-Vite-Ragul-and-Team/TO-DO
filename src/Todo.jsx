@@ -172,7 +172,7 @@ class App extends Component {
                             <input
                                 type="text"
                                 className="form-control"
-                                placeholder="Add a new todo"
+                                placeholder="New Task [Max 40 chars]"
                                 value={this.state.editMode ? this.state.editedTodo : this.state.newTodo}
                                 maxLength={40}  // Set the maximum length to 40 characters
                                 onChange={(e) =>
