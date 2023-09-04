@@ -1,73 +1,74 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import './DashboardStyle.css'
 
 function Dashboard() {
-  const [todos, setTodos] = useState([]);
-  const [input, setInput] = useState('');
-  const [editingIndex, setEditingIndex] = useState(-1);
+  const [notes, setNotes] = useState([]);
+  const containerElement = document.getElementById('container');
 
-  const addTodo = () => {
-    if (input.trim() !== '') {
-      if (editingIndex === -1) {
-        setTodos([...todos, { text: input, completed: false }]);
-      } else {
-        const updatedTodos = [...todos];
-        updatedTodos[editingIndex] = { text: input, completed: false };
-        setTodos(updatedTodos);
-        setEditingIndex(-1);
-      }
-      setInput('');
-    }
+  useEffect(() => {
+    const storedNotes = getAppStorage();
+    setNotes(storedNotes);
+  }, []);
+
+  const getAppStorage = () => {
+    return JSON.parse(localStorage.getItem('abdur_app') || '[]');
   };
 
-  const removeTodo = (index) => {
-    const updatedTodos = todos.filter((_, i) => i !== index);
-    setTodos(updatedTodos);
+  const createTextElement = (id, content) => {
+    const updatesticky = (id, name) => {
+      const updatedNotes = notes.map((note) =>
+        note.id === id ? { ...note, name } : note
+      );
+      setNotes(updatedNotes);
+      saveNote(updatedNotes);
+    };
+
+    const deleteNotes = (id) => {
+      const updatedNotes = notes.filter((note) => note.id !== id);
+      setNotes(updatedNotes);
+      saveNote(updatedNotes);
+    };
+
+    return (
+      <textarea
+        className="sticky"
+        value={content}
+        placeholder="Enter Your Notes"
+        onChange={(e) => updatesticky(id, e.target.value)}
+        onDoubleClick={() => {
+          const check = window.confirm('Are You Sure to Delete ?');
+          if (check) {
+            deleteNotes(id);
+          }
+        }}
+      />
+    );
   };
 
-  const editTodo = (index) => {
-    const todoToEdit = todos[index];
-    setInput(todoToEdit.text);
-    setEditingIndex(index);
+  const saveNote = (updatedNotes) => {
+    localStorage.setItem('abdur_app', JSON.stringify(updatedNotes));
   };
 
-  const toggleCompletion = (index) => {
-    const updatedTodos = [...todos];
-    updatedTodos[index].completed = !updatedTodos[index].completed;
-    setTodos(updatedTodos);
+  const addsticky = () => {
+    const newNote = {
+      id: Math.floor(Math.random() * 1000000),
+      name: '',
+    };
+    const updatedNotes = [...notes, newNote];
+    setNotes(updatedNotes);
+    saveNote(updatedNotes);
   };
 
   return (
     <div>
-      <h1>Todo List</h1>
-      <input
-        type="text"
-        placeholder="Add a new todo"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-      />
-      <button onClick={addTodo}>
-        {editingIndex === -1 ? 'Add' : 'Update'}
+      {notes.map((note) => (
+        <React.Fragment key={note.id}>
+          {createTextElement(note.id, note.name)}
+        </React.Fragment>
+      ))}
+      <button className="btn-add" onClick={addsticky}>
+        Add Sticky
       </button>
-      <div className="navbar">
-        <ul>
-          {todos.map((todo, index) => (
-            <li key={index}>
-              <span
-                style={{
-                  textDecoration: todo.completed ? 'line-through' : 'none',
-                }}
-              >
-                {todo.text}
-              </span>
-              <button onClick={() => toggleCompletion(index)}>
-                {todo.completed ? 'Undo' : 'Complete'}
-              </button>
-              <button onClick={() => editTodo(index)}>Edit</button>
-              <button onClick={() => removeTodo(index)}>Delete</button>
-            </li>
-          ))}
-        </ul>
-      </div>
     </div>
   );
 }

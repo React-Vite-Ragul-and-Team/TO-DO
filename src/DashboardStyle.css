@@ -1,34 +1,76 @@
-/* Add this CSS code to your external CSS file (e.g., styles.css) */
-
-/* ... Previous CSS code ... */
-
-/* Styling for the todo list container */
-.todo-list {
-    float: left; /* Float the container to the left */
-    width: calc(100% - 220px); /* Adjust the width to accommodate the navbar */
-    padding: 20px; /* Add padding for spacing */
+/* Apply a global reset for consistency */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
   
-  /* Additional styles for list items */
-  .todo-list li {
-    text-align: left; /* Align todo items to the left */
-    margin-bottom: 10px; /* Add spacing between list items */
+  /* Define styles for the dashboard container */
+  #container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   
-  /* ... Previous CSS code ... */
-  
-  /* Styling for the left-aligned navbar-like container */
-  .navbar {
-    position: fixed; /* Fixed position to make it static */
-    top: 0; /* Align it to the top of the screen */
-    left: 0; /* Align it to the left side of the screen */
-    width: 200px; /* Adjust the width as needed */
-    height: 100%; /* Cover the entire height of the screen */
-    background-color: #333; /* Background color for the navbar */
-    color: white; /* Text color for the items */
-    padding: 20px; /* Add padding for better spacing */
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Optional shadow effect */
+  /* Define styles for the sticky notes */
+  textarea.sticky {
+    width: 200px;
+    height: 150px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
   }
   
-  /* ... Previous CSS code ... */
+  /* Style the "Add Sticky" button */
+  .btn-add {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Style the "Add Sticky" button on hover */
+  .btn-add:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Style the confirm dialog */
+  .confirm-dialog {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+  }
+  
+  /* Style the confirm dialog buttons */
+  .confirm-buttons {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  /* Style the confirm dialog button */
+  .confirm-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Style the confirm dialog button on hover */
+  .confirm-button:hover {
+    background-color: #0056b3;
+  }
   
