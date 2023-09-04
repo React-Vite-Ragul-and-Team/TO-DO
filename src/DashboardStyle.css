@@ -1,0 +1,76 @@
+/* Apply a global reset for consistency */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Define styles for the dashboard container */
+  #container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  /* Define styles for the sticky notes */
+  textarea.sticky {
+    width: 200px;
+    height: 150px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+  }
+  
+  /* Style the "Add Sticky" button */
+  .btn-add {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Style the "Add Sticky" button on hover */
+  .btn-add:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Style the confirm dialog */
+  .confirm-dialog {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+  }
+  
+  /* Style the confirm dialog buttons */
+  .confirm-buttons {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  /* Style the confirm dialog button */
+  .confirm-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Style the confirm dialog button on hover */
+  .confirm-button:hover {
+    background-color: #0056b3;
+  }
+  
