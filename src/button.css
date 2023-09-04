@@ -1,4 +1,4 @@
-@keyframes colorCycle {
+@keyframes colorCycle1 {
   0% { background-color: red; }
   33% { background-color: green; }
   66% { background-color: blue; }
@@ -8,7 +8,7 @@
 
 .button {
  /* Custom background color */
-  animation: colorCycle 3s linear infinite;
+  animation: colorCycle1 3s linear infinite;
   color: #fff; /* Custom text color */
   border: none; /* Remove default button border */
   padding: 10px 20px; /* Adjust padding to your preference */
