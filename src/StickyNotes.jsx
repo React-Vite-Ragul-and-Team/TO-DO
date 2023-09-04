@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './DashboardStyle.css'
+import './StickyNotes.css'
 
-function Dashboard() {
+function StickyNotes() {
   const [notes, setNotes] = useState([]);
   const containerElement = document.getElementById('container');
 
@@ -77,4 +77,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default StickyNotes;
