@@ -10,6 +10,7 @@ export default function Router() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="dashboard" element={<Dashboard />} />
+
                 <Route path="*" element={<ErrorPage />} />
             </Routes>
         </BrowserRouter>
