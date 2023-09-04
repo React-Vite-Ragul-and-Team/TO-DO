@@ -8,17 +8,72 @@
   gap: 20px;
 }
 
+header {
+  position: fixed; /* Keeps the header in a fixed position */
+  top: 0; /* Places the header at the top of the viewport */
+  left: 0;
+  right: 0;
+  display: flex; /* Use flexbox to center content */
+  justify-content: center; /* Center content horizontally */
+  align-items: center;
+  background-color: #000000; /* Set a background color for the header */
+  width: 100%; /* Makes the header span the entire width of the viewport */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a shadow for better visibility */
+  padding: 10px 20px; /* Add padding to the header for spacing */
+  z-index: 999; /* Adjust the z-index to ensure it appears above other content */
+  justify-content: center;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex; /* Use flexbox to center content */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  background-color: #000000;
+  height: 32px;
+  width: 100%;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Add shadow to the bottom */
+  /* padding: 20px; */
+  z-index: 999;
+}
+
+#footer-text {
+  min-height: -10vh;
+  margin: 0;
+  font-size: 16px;
+  color: red; /* Set the text color to red */
+  text-align: center;
+  padding-bottom: 0;
+}
+
+/* CSS animation for blinking */
+@keyframes blink {
+  0%, 30% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.blink {
+  animation: blink 1s infinite; /* Apply the blinking animation */
+}
+
 /* Style for individual sticky notes */
 .sticky {
-  width: 200px;
-  height: 150px;
+  width: 240px;
+  height: 180px;
   padding: 10px;
   border: 2px solid #333;
   border-radius: 8px;
   font-size: 16px;
   resize: both;
   overflow: auto;
-  margin: 10px;
+  margin: 20px;
 }
 
 /* Style for the "Add Sticky" button */
@@ -26,11 +81,30 @@
   background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
+  border-radius: 50%;
+  padding: 5px 10px;
   font-size: 16px;
   cursor: pointer;
   margin-top: 10px;
+  height: 60px;
+  width:60px;
+  justify-content: center;
+}
+
+@keyframes colorCycle {
+  0% { color: red; }
+  25% { color: blue; }
+  50% { color: green; }
+  75% { color: purple; }
+  100% { color: orange; }
+}
+
+#color-cycling-text {
+  animation: colorCycle 5s infinite;
+}
+
+.sticky::placeholder {
+  color: #ffffff; /* Change the color to your desired placeholder color */
 }
 
 /* Style for the "Add Sticky" button on hover */
