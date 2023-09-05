@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-function ErrorPage() {
-    return (
-        <div className="errorPage">
-            <h1>404 - Page Not Found</h1>
-            <p>The page you are looking for does not exist.</p>
-        </div>
-    );
-}
-
-=======
 import './ErrorPage.css'
 import Home from './Home'
 import { Link } from 'react-router-dom'
@@ -28,5 +17,4 @@ function ErrorPage() {
     );
 }
 
->>>>>>> 9fd54c79df9c92865016a31161e31ead17bcc363
 export default ErrorPage
