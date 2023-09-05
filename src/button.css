@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @keyframes colorCycle {
   0% { background-color: red; }
   33% { background-color: green; }
@@ -19,3 +20,31 @@
 
 
 
+=======
+@keyframes colorCycle1 {
+  0% { background-color: red; }
+  33% { background-color: green; }
+  66% { background-color: blue; }
+  100% { background-color: red; }  
+}
+
+
+.button {
+ /* Custom background color */
+  animation: colorCycle1 3s linear infinite;
+  color: #fff; /* Custom text color */
+  border: none; /* Remove default button border */
+  padding: 10px 20px; /* Adjust padding to your preference */
+  font-size: 16px; /* Custom font size */
+  cursor: pointer; /* Add a pointer cursor on hover */
+  border-radius: 13px; /* Rounded corners for the button */
+}
+.b1{
+  margin-top:20px;
+
+}
+
+
+
+
+>>>>>>> 9fd54c79df9c92865016a31161e31ead17bcc363
