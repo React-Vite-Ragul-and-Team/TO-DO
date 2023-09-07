@@ -21,9 +21,9 @@ function Home() {
           <button  className='button b1' ><Link to="/todo" style={{ color: 'white' }} >Start ToDo List</Link></button>
         </div>
       </div>
-      
     </>
-  )
+  );
+
 }
 
 export default Home
