@@ -12,7 +12,7 @@ function Home() {
           <img src={reactLogo} className="padam" />
         </div>
         <div >
-          <h1 className='todo' style={{ color: 'white' }}>To-Do List</h1>
+          <h1 className='todo' style={{ color: 'white' }}>To Do List</h1>
           <h2 className='todo' style={{ color: 'white' }}>2 IN 1</h2>
           <p style={{ color: 'white' }}>Stay Organized, Achieve More.</p>
           <br />
